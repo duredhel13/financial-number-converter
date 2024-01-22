@@ -1,0 +1,23 @@
+<form (ngSubmit)="onSubmit()" #numberForm="ngForm">
+  <div>
+    <label for="abbreviatedNumber">Number</label>
+    <br />
+    <input
+      type="text"
+      id="name"
+      [(ngModel)]="abbreviatedNumber"
+      name="abbreviatedNumber"
+      #name="ngModel"
+      appNumberPattern
+    />
+    <div *ngIf="(name.errors?.invalidNumber) && !name.pristine">
+      Number is invalid
+    </div>
+  </div>
+  <br />
+  <button
+    type="submit"
+    [disabled]="name.errors?.invalidNumber">
+    Submit
+  </button>
+</form>
